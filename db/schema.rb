@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2022_05_09_190613) do
   end
 
   create_table "guides", force: :cascade do |t|
+    t.string "guide_name"
+    t.string "dni"
+    t.string "email"
+    t.string "phone_number"
+    t.date "date_of_birth"
+    t.string "country"
+    t.string "city"
+    t.integer "age"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
