@@ -1,0 +1,23 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Add place what your visit</h3>
+        <%= simple_form_for [@place, @guide] do |f| %>
+          <%= f.input :guide_name, placeholder: 'Enter a guide name', required: true %>
+          <%= f.input :first_name, placeholder: 'Enter a first name', required: true %>
+          <%= f.input :last_name, placeholder: 'Enter a last name', required: true %>
+          <%= f.input :dni, placeholder: 'Enter a dni', required: true %>
+          <%= f.input :age, placeholder: 'Enter a age', required: true %>
+          <%= f.input :date_of_birth, placeholder: 'example 23/05/2002', required: true %>
+          <%= f.input :phone_number, placeholder: 'example +59168548541', required: true %>
+          <%= f.input :email, placeholder: 'Enter a email', required: true %>
+          <%= f.input :country, placeholder: 'Enter a country', required: true %>
+          <%= f.input :city, placeholder: 'Enter a city', required: true %>
+          <%= f.input :photo, as: :file, required: true %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

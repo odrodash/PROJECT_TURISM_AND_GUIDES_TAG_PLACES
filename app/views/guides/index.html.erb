@@ -1,0 +1,16 @@
+<div class="container">
+  <h2><b>All Guides</b></h2>
+  <% @guides.each do |guide| %>
+    <%= guide.guide_name %>
+    <%= guide.dni %>
+    <%= guide.first_name %>
+    <%= guide.last_name %>
+    <%= guide.age %>
+    <%= guide.country %>
+    <%= guide.city %>
+    <%= guide.phone_number %>
+    <%= guide.email %>
+    <%= guide.date_of_birth %>
+
+  <% end %>
+</div>
