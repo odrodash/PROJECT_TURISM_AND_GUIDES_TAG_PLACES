@@ -19,3 +19,18 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
+
+.banner-secondary {
+  background-size: cover;
+  background-position: center;
+  padding: 30px 0;
+  height: 600px;
+}
+
+.banner-secondary p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+}
