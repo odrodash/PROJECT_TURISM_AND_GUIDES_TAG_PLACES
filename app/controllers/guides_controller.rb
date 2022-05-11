@@ -1,5 +1,6 @@
 class GuidesController < ApplicationController
-  before_action :set_place, only: [:show, :new, :create]
+  before_action :set_place, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @guides = Guide.all
@@ -16,7 +17,8 @@ class GuidesController < ApplicationController
 
   def create
     @guide = Guide.new(guide_params)
-    @guide.place = @place
+    @guide.place_id = @place.id
+
     if @guide.save
       redirect_to guide_path(@guide)
     else
@@ -34,7 +36,7 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:first_name, :last_name, :phone_number, :guide_name, :dni, :email, :date_of_birth, :country, :city, :age)
+    params.require(:guide).permit(:first_name, :last_name, :phone_number, :guide_name, :dni, :email, :date_of_birth, :country, :city, :age, :photo)
   end
 
   def set_place

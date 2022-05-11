@@ -16,3 +16,20 @@
   height: 50vh;
   max-height: 600px;
 }
+
+.anchor-white {
+  text-decoration: none;
+  color: white;
+
+    &:hover {
+      color: rgba(200, 200, 200, 0.6);
+    }
+}
+
+.card-home img {
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 10px 10px 0px 1px rgba(0, 0, 0, 0.2);
+}

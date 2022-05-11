@@ -3,7 +3,7 @@
 <div class="container">
   <% @places.each do |place| %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path place.photo.key, height: 300, crop: :fill %>')">
-      <h3><b><%= place.place %></b></h3>
+      <h3><b><%= link_to place.place, place_path(place), class: "anchor-white" %></b></h3>
     </div>
   <% end %>
 </div>

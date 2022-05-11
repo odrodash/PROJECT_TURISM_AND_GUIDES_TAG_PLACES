@@ -1,4 +1,5 @@
 <div class="container py-5">
+  <% collection = ["Argentina", "Brasil", "Bolivia", "Chile", "Perú", "Colombia", "Puerto Rico", "Costa Rica", "Mexico", "Ecuador","Guatemala", "Uruguay", "Paraguay", "Honduras", "Cuba", "El Salvador", "Nicaragua", "Panamá","Venezuela"] %>
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
@@ -9,10 +10,11 @@
           <%= f.input :last_name, placeholder: 'Enter a last name', required: true %>
           <%= f.input :dni, placeholder: 'Enter a dni', required: true %>
           <%= f.input :age, placeholder: 'Enter a age', required: true %>
-          <%= f.input :date_of_birth, placeholder: 'example 23/05/2002', required: true %>
+          <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 60,
+                                          end_year: Date.today.year - 10, required: true %>
           <%= f.input :phone_number, placeholder: 'example +59168548541', required: true %>
           <%= f.input :email, placeholder: 'Enter a email', required: true %>
-          <%= f.input :country, placeholder: 'Enter a country', required: true %>
+          <%= f.input :country, as: :select, collection: collection, required: true %>
           <%= f.input :city, placeholder: 'Enter a city', required: true %>
           <%= f.input :photo, as: :file, required: true %>
           <%= f.submit class: 'btn btn-flat' %>

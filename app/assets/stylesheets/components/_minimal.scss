@@ -1,0 +1,20 @@
+#font-arial {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.anchor-white {
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    color: rgba(200, 200, 200, 0.6);
+  }
+}
+
+#border-white {
+  display: inline-block;
+  border-bottom: 3px solid #FA2255;
+  color: #F4F4F4;
+}

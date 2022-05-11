@@ -1,16 +1,50 @@
 <div class="container">
   <h2><b>All Guides</b></h2>
-  <% @guides.each do |guide| %>
-    <%= guide.guide_name %>
-    <%= guide.dni %>
-    <%= guide.first_name %>
-    <%= guide.last_name %>
-    <%= guide.age %>
-    <%= guide.country %>
-    <%= guide.city %>
-    <%= guide.phone_number %>
-    <%= guide.email %>
-    <%= guide.date_of_birth %>
+  <div class="container">
+    <% @guides.each do |guide| %>
+      <div>
+        <div>
+          <%= cl_image_tag(guide.photo.key, :transformation=>[
+                                            {:radius=>"max"},
+                                            {:height=>200, :crop=>"scale"}
+                                            ])%>
+        </div>
+        <div>
+          <p>
+          <%= guide.guide_name %>
+          </p>
+          <p>
+            <%= guide.dni %>
+          </p>
+          <p>
+            <%= guide.first_name %>
+          </p>
+          <p>
+            <%= guide.last_name %>
+          </p>
+          <p>
+            <%= guide.age %>
+          </p>
+          <p>
+            <%= guide.country %>
+          </p>
+          <p>
+          <%= guide.city %>
+          </p>
+          <p>
+            <%= guide.phone_number %>
+          </p>
+          <p>
+            <%= guide.email %>
+          </p>
+          <p>
+            <%= guide.date_of_birth %>
+          </p>
+        </div>
 
-  <% end %>
+      </div>
+      <%= link_to "Delete Guide", guide_path(guide), method: :delete %> |
+      <%= link_to "See Profile Guide", guide_path(guide) %>
+    <% end %>
+  </div>
 </div>

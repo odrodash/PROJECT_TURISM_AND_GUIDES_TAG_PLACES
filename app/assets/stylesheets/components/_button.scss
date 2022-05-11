@@ -1,0 +1,15 @@
+.btn-home {
+  padding: 10px 30px;
+  border-radius: 20px;
+  background-color: #FA2255;
+  color: aliceblue;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.btn-home:hover {
+  opacity: 1;
+  transition: 0.3s;
+  color: white;
+}

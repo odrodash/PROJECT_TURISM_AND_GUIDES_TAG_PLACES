@@ -1,5 +1,8 @@
 <div class="container">
-  <%= cl_image_path(@guide.photo.key)  %>
+  <%= cl_image_tag(@guide.photo.key, :transformation=>[
+  {:radius=>"max"},
+  {:height=>200, :crop=>"scale"}
+  ])%>
   <h2><b><%= @guide.guide_name %></b></h2>
   <p><%= @guide.first_name %></p>
   <p><%= @guide.last_name %></p>
