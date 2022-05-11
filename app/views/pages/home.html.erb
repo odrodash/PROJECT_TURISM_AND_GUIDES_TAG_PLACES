@@ -1,4 +1,5 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.volafinance.com/wp-content/uploads/2020/06/image.jpg);">
+<%# cambiar las direcciones de la imagenes de la home page ya que son estaticas y no dinamicas esto puede perjudicar a que no se muestra las imagenes una vez subida a nuestro host  %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652292241/development/home_ir0nnv.jpg);">
   <div class="container">
     <h1>Welcome to "TAG" <strong>Turism</strong> and <strong>Guides</strong>!</h1>
     <p>Get to know the best places with local guides</p>
@@ -8,7 +9,7 @@
 <div class="container">
   <div class="text-center my-5">
     <h2 id="font-arial"><b>TOP PLACES</b></h2>
-    <p id="border-white">ssssss</p>
+    <p id="border-white">sssssssss</p>
   </div>
   <div class="row">
     <div class="col-12 col-md-6 col-mg-4">
@@ -19,7 +20,9 @@
         <div class="container text-center my-5">
           <h4><b>Samaipata</b></h4>
           <p class="my-3">es un lugar muy bueno para pasar el rato te lo aseguro que lo pasaras bien con gente humilde de la comunidad</p>
-          <a href="http://localhost:3000/places/1" class="btn-home" role="button">See More</a>
+          <div class="my-5">
+            <a href="http://localhost:3000/places/1" target="_blank" class="btn-home" role="button">See More</a>
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +34,9 @@
         <div class="container text-center my-5">
           <h4><b>Chochís</b></h4>
           <p class="my-3">es un estupendo lugar muy bonito con artos sitios a los cuales puedes ir a visitar y pasarla bien en familia o solo</p>
-          <a href="http://localhost:3000/places/2" class="btn-home" role="button">See More</a>
+          <div class="my-5">
+            <a href="http://localhost:3000/places/2" target="_blank" class="btn-home" role="button">See More</a>
+          </div>
         </div>
       </div>
     </div>
@@ -122,9 +127,8 @@
       </div>
       <div class="card-home mx-3 my-5">
         <a href="http://localhost:3000/places/9" target="_blank"><img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652302684/development/dfrm683wfo1ropksnqggc5c9f0h7.jpg" alt="laguna-colorada-bolivia"></a>
-        <h4 class="my-3"><b>Lagunas Colorada</b></h4>
+        <h4 class="my-3"><b>Laguna Colorada</b></h4>
       </div>
     </div>
   </div>
 </div>
-
