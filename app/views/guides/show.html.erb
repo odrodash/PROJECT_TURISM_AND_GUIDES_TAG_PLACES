@@ -15,5 +15,5 @@
   <p><%= @guide.country %></p>
   <p><%= @guide.city %></p>
   <%= link_to "Edit Profile", edit_place_guide_path(@guide), class: "btn btn-outline-warning" %>
-  <%= link_to "Edit Profile", edit_place_guide_path(@guide), method: :delete, class: "btn btn-outline-danger" %>
+  <%= link_to "Delete Profile", guide_path(@guide), method: :delete, class: "btn btn-outline-danger" %>
 </div>
