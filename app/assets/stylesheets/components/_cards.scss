@@ -9,12 +9,31 @@
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-category-place {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-category:hover {
+  border: 2px solid #f4845f;
+  transition: 0.1s;
 }
 
 .card-large {
-  height: 50vh;
-  max-height: 600px;
+  height: 65vh;
+  max-height: 800px;
 }
 
 .card-home img {

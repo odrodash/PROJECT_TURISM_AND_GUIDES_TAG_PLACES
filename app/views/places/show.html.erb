@@ -1,7 +1,66 @@
-<div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @place.photo.attached? ? cl_image_path(@place.photo.key) : asset_path('list_background.jpg') %>)">
-  <h2><b> <%= @place.place %> </b></h2>
+<div class="card-category-place card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @place.photo.attached? ? cl_image_path(@place.photo.key) : asset_path('list_background.jpg') %>)">
+  <h2><b> <%= @place.place %> - <%= @place.country %></b></h2>
 </div>
-
-<div class="container">
-  <%= link_to "Create Guide Profile", new_place_guide_path(@place) %>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <h3><b>Description the <%= @place.place %></b></h3>
+    <p><%= @place.description %></p>
+    <div class="container text-center bg-white p-4">
+        <% @place.rating.to_i.times do %>
+          <i class="fas fa-star star-yellow"></i>
+        <% end %>
+        <h4 class="d-inline-block mx-4"><strong>Reference Stars</strong></h4>
+    </div>
+  </div>
+  <hr class="my-3">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 my-5">
+        <h3>Reviews</h3>
+        <% if @place.reviews.empty? %>
+          <small><em class="text-muted">Be the first one to review this place</em></small>
+        <% end %>
+        <% @place.reviews.each do |review| %>
+          <div>
+            <% review.rating.times do %>
+              <i class="fas fa-star star-yellow"></i>
+            <% end %>
+            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+            <p class="mb-0"><%= review.comment %></p>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="bg-white rounded p-3">
+          <h5>Add your review</h5>
+          <%= simple_form_for [@place, @review] do |f| %>
+            <%= f.input :comment, placeholder: "Add your review here..." %>
+            <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "jquery-bar-rating" } } %>
+            <%= f.submit class:"btn btn-outline-dark" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="my-3">
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12">
+    <div class="container-fluid row">
+      <% @place.guides.each do |guide| %>
+        <div class="my-3 col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <%= link_to guide_path(guide), class: "anchor-white",action: "go" do %>
+            <div class="card-category" style="background-image: url('<%= cl_image_path guide.photo.key, crop: :fill %>')">
+              <h3 class="text-center"><b><%= guide.guide_name %></b></h3>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container row">
+  <%= link_to "Create Guide Profile", new_place_guide_path(@place), class: "btn btn-outline-primary around my-4 mx-1 col-12 col-sm-5 col-md-4 col-lg-3 col-xl-3" %>
+  <%= link_to "Create New Place", new_place_path, class: "btn btn-outline-primary around my-4 mx-1 col-12 col-sm-5 col-md-4 col-lg-3 col-xl-3" %>
 </div>

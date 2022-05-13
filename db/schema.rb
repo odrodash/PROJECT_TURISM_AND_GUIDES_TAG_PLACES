@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_10_163940) do
+ActiveRecord::Schema.define(version: 2022_05_12_223132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,15 +76,18 @@ ActiveRecord::Schema.define(version: 2022_05_10_163940) do
     t.string "place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
+    t.text "description"
+    t.integer "rating"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.text "comment"
     t.integer "rating"
     t.bigint "place_id", null: false
-    t.bigint "guide_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "guide_id"
     t.index ["guide_id"], name: "index_reviews_on_guide_id"
     t.index ["place_id"], name: "index_reviews_on_place_id"
   end
@@ -110,6 +113,5 @@ ActiveRecord::Schema.define(version: 2022_05_10_163940) do
   add_foreign_key "bookings", "places"
   add_foreign_key "bookings", "users"
   add_foreign_key "guides", "places"
-  add_foreign_key "reviews", "guides"
   add_foreign_key "reviews", "places"
 end

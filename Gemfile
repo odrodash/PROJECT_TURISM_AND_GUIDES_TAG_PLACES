@@ -25,7 +25,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'devise'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+# gem 'pg_search', '~> 2.3.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
