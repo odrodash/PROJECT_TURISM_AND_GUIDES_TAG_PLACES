@@ -1,5 +1,7 @@
 class GuidesController < ApplicationController
   before_action :set_place, only: [:new, :create]
+  before_action :set_guide, only: [:show, :edit, :update, :destroy]
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -7,7 +9,6 @@ class GuidesController < ApplicationController
   end
 
   def show
-    @guide = Guide.find(params[:id])
     @guide.place = @place
   end
 
@@ -26,8 +27,18 @@ class GuidesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @guide.update(guide_params)
+      redirect_to guide_path(@guide)
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @guide = Guide.find(params[:id])
     @guide.destroy
 
     redirect_to guides_path
@@ -41,5 +52,9 @@ class GuidesController < ApplicationController
 
   def set_place
     @place = Place.find(params[:place_id])
+  end
+
+  def set_guide
+    @guide = Guide.find(params[:id])
   end
 end

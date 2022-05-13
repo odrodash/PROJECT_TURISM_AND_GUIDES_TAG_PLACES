@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Create Guide Profile</h3>
+        <h3>Add place what your visit</h3>
         <%= simple_form_for [@place, @guide] do |f| %>
           <%= f.input :guide_name, placeholder: 'Enter a guide name', required: true %>
           <%= f.input :first_name, placeholder: 'Enter a first name', required: true %>
@@ -17,7 +17,7 @@
           <%= f.input :country, as: :select, collection: collection, required: true %>
           <%= f.input :city, placeholder: 'Enter a city', required: true %>
           <%= f.input :photo, as: :file, required: true %>
-          <%= f.submit class: 'btn btn-outline-primary' %>
+          <%= f.submit class: 'btn btn-outline-success' %>
         <% end %>
       </div>
     </div>

@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     @place = Place.find(params[:place_id])
     @review.place = @place
     if @review.save
-      redirect_to place_path(@place)
+      redirect_to place_path(@place, anchor: "review-#{@review.id}")
     else
       render 'places/show'
     end
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to list_path(@review.place)
+    redirect_to place_path(@review.place, anchor: "reviews")
   end
 
   private

@@ -2,7 +2,7 @@
   <h2><b> <%= @place.place %> - <%= @place.country %></b></h2>
 </div>
 <div class="row">
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-white p-4">
     <h3><b>Description the <%= @place.place %></b></h3>
     <p><%= @place.description %></p>
     <div class="container text-center bg-white p-4">
@@ -10,12 +10,17 @@
           <i class="fas fa-star star-yellow"></i>
         <% end %>
         <h4 class="d-inline-block mx-4"><strong>Reference Stars</strong></h4>
+        <small><em class="text-muted">created <%= distance_of_time_in_words_to_now(@place.created_at) %> ago</em></small>
+    </div>
+    <div>
+      <%= link_to "Edit Place", edit_place_path(@place), class: "btn btn-outline-warning mx-4"%>
+      <%= link_to "Delete Place", place_path(@place), method: :delete, class: "btn btn-outline-danger mx-4", data: { confirm: "Are you sure delete place?"} %>
     </div>
   </div>
-  <hr class="my-3">
+  <hr class="">
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 my-5">
+    <div class="row justify-content-center">
+      <div id="reviews" class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-5 p-4">
         <h3>Reviews</h3>
         <% if @place.reviews.empty? %>
           <small><em class="text-muted">Be the first one to review this place</em></small>
@@ -26,18 +31,19 @@
               <i class="fas fa-star star-yellow"></i>
             <% end %>
             <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-            <p class="mb-0"><%= review.comment %></p>
+            <p id="review-<%= review.id %>" class="mb-0"><%= review.comment %></p>
+            <%= link_to "Delete Review", review_path(review), remote: true, method: :delete, class: "btn btn-outline-danger my-3", data: { confirm: "Are you sure delete place?"} %>
           </div>
           <hr>
         <% end %>
       </div>
-      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-5">
         <div class="bg-white rounded p-3">
           <h5>Add your review</h5>
-          <%= simple_form_for [@place, @review] do |f| %>
+          <%= simple_form_for([@place, @review], remote: true) do |f| %>
             <%= f.input :comment, placeholder: "Add your review here..." %>
             <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "jquery-bar-rating" } } %>
-            <%= f.submit class:"btn btn-outline-dark" %>
+            <%= f.submit class:"btn btn-outline-primary" %>
           <% end %>
         </div>
       </div>
@@ -48,10 +54,14 @@
 <div class="row">
   <div class="col-12 col-sm-12 col-md-12">
     <div class="container-fluid row">
+      <h4 class="text-center"><b>All Guides the Place</b></h4>
+      <div class="my-3 text-center">
+        <small><em class="text-muted">Press Image</em></small>
+      </div>
       <% @place.guides.each do |guide| %>
         <div class="my-3 col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
           <%= link_to guide_path(guide), class: "anchor-white",action: "go" do %>
-            <div class="card-category" style="background-image: url('<%= cl_image_path guide.photo.key, crop: :fill %>')">
+            <div class="card-category avatar-guide" style="background-image: url('<%= cl_image_path guide.photo.key, crop: :fill, height: 200, radius: :max, background: "#F4F4F4" %>')">
               <h3 class="text-center"><b><%= guide.guide_name %></b></h3>
             </div>
           <% end %>
@@ -60,6 +70,7 @@
     </div>
   </div>
 </div>
+<hr>
 <div class="container row">
   <%= link_to "Create Guide Profile", new_place_guide_path(@place), class: "btn btn-outline-primary around my-4 mx-1 col-12 col-sm-5 col-md-4 col-lg-3 col-xl-3" %>
   <%= link_to "Create New Place", new_place_path, class: "btn btn-outline-primary around my-4 mx-1 col-12 col-sm-5 col-md-4 col-lg-3 col-xl-3" %>

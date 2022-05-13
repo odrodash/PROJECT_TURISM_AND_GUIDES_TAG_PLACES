@@ -1,9 +1,10 @@
 <div class="container">
-  <%= cl_image_tag(@guide.photo.key, :transformation=>[
+  <%= cl_image_tag(@guide.photo.key, class: "my-5",:transformation=>[
   {:radius=>"max"},
-  {:height=>200, :crop=>"scale"}
+  {:height=>200, :crop=>"scale"},
+  {:background=>"#F4F4F4"}
   ])%>
-  <h2><b><%= @guide.guide_name %></b></h2>
+  <h5><b><%= @guide.guide_name %></b></h5>
   <p><%= @guide.first_name %></p>
   <p><%= @guide.last_name %></p>
   <p><%= @guide.dni %></p>
@@ -13,4 +14,6 @@
   <p><%= @guide.phone_number %></p>
   <p><%= @guide.country %></p>
   <p><%= @guide.city %></p>
+  <%= link_to "Edit Profile", edit_place_guide_path(@guide), class: "btn btn-outline-warning" %>
+  <%= link_to "Edit Profile", edit_place_guide_path(@guide), method: :delete, class: "btn btn-outline-danger" %>
 </div>

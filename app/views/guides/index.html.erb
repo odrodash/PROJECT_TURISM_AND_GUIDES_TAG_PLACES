@@ -1,50 +1,37 @@
 <div class="container">
-  <h2><b>All Guides</b></h2>
-  <div class="container">
+  <h2 class="text-center my-4"><b>All Guides</b></h2>
+  <div class="container my-4 row">
     <% @guides.each do |guide| %>
-      <div>
-        <div>
-          <%= cl_image_tag(guide.photo.key, :transformation=>[
-                                            {:radius=>"max"},
-                                            {:height=>200, :crop=>"scale"}
-                                            ])%>
+      <div class="card-guides my-3 d-inline-block col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <div class="row">
+          <div style="background-image: url(<%= cl_image_path guide.photo.key, height: 220 %>)" id="banner-card-profile" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4"></div>
+          <div class="p-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h5 class="border-top pt-2"><b>Guide Username :</b></h5>
+            <p><%= guide.guide_name.capitalize %></p>
+            <h5 class="border-top pt-2"><b>First Name :</b></h5>
+            <p><%= guide.first_name.capitalize %></p>
+            <h5 class="border-top pt-2"><b>Last Name :</b></h5>
+            <p><%= guide.last_name.capitalize %></p>
+            <h5 class="border-top pt-2"><b>DNI :</b></h5>
+            <p><%= guide.dni %></p>
+            <h5 class="border-top pt-2"><b>Country :</b></h5>
+            <p><%= guide.country.capitalize %></p>
+            <h5 class="border-top pt-2"><b>City :</b></h5>
+            <p><%= guide.city.capitalize %></p>
+            <h5 class="border-top pt-2"><b>Age :</b></h5>
+            <p><%= guide.age %></p>
+            <h5 class="border-top pt-2"><b>Email :</b></h5>
+            <p><%= guide.email %></p>
+          </div>
+          <div class="text-center border-top col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <%= link_to "Delete Guide", guide_path(guide), class: "btn btn-outline-danger mx-2 my-2", method: :delete, data: { confirm: "You are sure delete this profile?"} %>
+            <%= link_to "See Profile Guide", guide_path(guide), class: "btn btn-outline-dark mx-2 my-2" %>
+          </div>
+          <div class="card-footer col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(guide.created_at) %> ago</em></small>
+          </div>
         </div>
-        <div>
-          <p>
-          <%= guide.guide_name %>
-          </p>
-          <p>
-            <%= guide.dni %>
-          </p>
-          <p>
-            <%= guide.first_name %>
-          </p>
-          <p>
-            <%= guide.last_name %>
-          </p>
-          <p>
-            <%= guide.age %>
-          </p>
-          <p>
-            <%= guide.country %>
-          </p>
-          <p>
-          <%= guide.city %>
-          </p>
-          <p>
-            <%= guide.phone_number %>
-          </p>
-          <p>
-            <%= guide.email %>
-          </p>
-          <p>
-            <%= guide.date_of_birth %>
-          </p>
-        </div>
-
       </div>
-      <%= link_to "Delete Guide", guide_path(guide), method: :delete %> |
-      <%= link_to "See Profile Guide", guide_path(guide) %>
     <% end %>
   </div>
 </div>
