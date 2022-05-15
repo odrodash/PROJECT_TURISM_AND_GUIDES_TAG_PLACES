@@ -10,6 +10,7 @@ class GuidesController < ApplicationController
 
   def show
     @guide.place = @place
+    @review = Review.new(guide: @guide)
   end
 
   def new
