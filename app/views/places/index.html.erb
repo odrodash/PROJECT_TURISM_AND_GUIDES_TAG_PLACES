@@ -6,7 +6,7 @@
     <% @places.each do |place| %>
       <div class="my-3 col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
         <%= link_to place_path(place), class: "anchor-white",action: "go" do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path place.photo.key, crop: :fill %>')">
+          <div class="card-category rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path place.photo.key, crop: :fill %>')">
             <h3 class="text-center"><b><%= place.place %></b></h3>
           </div>
         <% end %>
