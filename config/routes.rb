@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :reviews, only: :destroy
 
   resources :guides, only: [:index, :destroy, :show, :edit, :update] do
-    resources :reviews, only: :create
+    resources :review_guides, only: :create
   end
+
+  resources :review_guides, only: :destroy
 end
