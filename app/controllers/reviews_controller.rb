@@ -10,17 +10,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def creation
-    @review = Review.new(review_params)
-    @guide = Guide.find(params[:guide_id])
-    @review.guide = @guide
-    if @review.save
-      redirect_to guide_path(@guide, anchor: "review-#{@review.id}")
-    else
-      render "guides/show"
-    end
-  end
-
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
