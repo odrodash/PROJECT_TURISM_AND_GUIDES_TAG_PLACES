@@ -1,9 +1,9 @@
 <%# cambiar las direcciones de la imagenes de la home page ya que son estaticas y no dinamicas esto puede perjudicar a que no se muestra las imagenes una vez subida a nuestro host  %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652292241/development/home_ir0nnv.jpg);">
   <div class="container">
-    <h1>Welcome to "TAG" <strong>Turism</strong> and <strong>Guides</strong>!</h1>
+    <h1>Welcome to "TAG" <strong>Tourism</strong> and <strong>Guides</strong>!</h1>
     <p>Get to know the best places with local guides</p>
-    <%= link_to "Go See Places", places_path, class: "btn btn-outline-light" %>
+    <%= link_to "Go See Places", places_path, target: "_blank", class: "btn btn-outline-light" %>
   </div>
 </div>
 <div class="container">
@@ -42,69 +42,26 @@
     </div>
   </div>
 </div>
-<div class="banner-secondary mt-5" style="background-color: black">
-  <div class="container row justify-content-center">
-    <div class="container-carousel-home mx-3 my-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label=""></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label=""></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label=""></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="3500">
-            <a href="https://tag-places-sergioski9.herokuapp.com/places/10" target="_blank"><img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/w_500,h_442,c_scale/development/santa_-cruz-1_igri9i.jpg" class="d-block w-100 rounded-3" alt="santa-cruz-catedral"></a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5><strong>Santa Cruz de la Sierra</strong></h5>
-              <p>Catedral, Plaza 24 de Septiembre.</p>
-            </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="3500">
-            <a href="https://tag-places-sergioski9.herokuapp.com/places/5" target="_blank"><img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652292304/development/santa-cruz-2_ztodrf.jpg" class="d-block w-100 rounded-3" alt="santa-cruz-ciudad-de-los-anillos"></a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5><strong>Ciudad de los Anillos</strong></h5>
-              <p>Santa Cruz de la sierra desde arriba.</p>
-            </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="3500">
-            <a href="https://tag-places-sergioski9.herokuapp.com/places/4" target="_blank"><img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/w_500,h_442,c_scale/development/santa-cruz-3_vlzrem.jpg" class="d-block w-100 rounded-3" alt="santa-cruz-de-la-sierra-parque-noel-kampf"></a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5><strong>Santa Cruz de la Sierra</strong></h5>
-              <p>Parque Nacional Noel Kempff Mercado.</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-    <div class="card-home-letters text-end my-5 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-      <div class="my-5">
-        <h2 id="font-arial-white" class="text-shadow"><strong>EXPLORE THE BOLIVIA</strong></h2>
-        <p class="text-shadow">Santa Cruz de la Sierra fue fundada el 26 de febrero de 1561 por el capitan Ñuflo de Chaves, en el cual descubrieron una selva tropical con climas que pueden variar de un momento a otro y con una tierra fertil donde la naturaleza abunda, el mayor atractivo turistico de santa cruz de la sierra es su diversidad y la hospitalidad de sus habitantes</p>
-        <a href="https://tag-places-sergioski9.herokuapp.com/places/10" class="btn btn-outline-light">Learn More</a>
-      </div>
-    </div>
+<div class="banner mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652728418/development/home-guide_grlhur.jpg);">
+  <div class="container">
+    <h2>Learn more about the guide service <strong>Tourism</strong> and <strong>Guides</strong>!</h1>
+    <p>Find out about the guide services offered by our page</p>
+    <%= link_to "Go Home Guides", homeguides_path, class: "btn btn-outline-light" %>
   </div>
 </div>
-<div class="container my-5">
-  <div class="container">
+<div class="container row my-5">
+  <div class="container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
     <div class="row">
+      <div class="card-home my-4 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <a href="https://tag-places-sergioski9.herokuapp.com/places/3" target="_blank"><img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652296970/development/espejillos-santa-cruz_vtqfvm.jpg" alt="espejillos-santa-cruz-bolivia" class="my-4"></a>
+        <h3 class="text-center"><b>Espejillos</b></h3>
+      </div>
       <div class="container-fluid col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
         <div class="container-letters container-fluid my-5">
           <h3 class="text-shadow"><strong>Santa Cruz - Espejillos</strong></h3>
           <p class="text-shadow">Espejillos es la puerta de entrada al Parque Nacional Amboró, el lugar es un balneario formado por cascadas y saltos de agua rodeado de una vegetación selvática. Un lugar ideal para disfrutar del agua y las caminatas en medio de la naturaleza.</p>
           <p class="text-shadow">Espejillos se encuentra a 45 kilómetros de la ciudad de Santa Cruz de la Sierra. Para llegar se debe conducir por la vieja ruta a Cochabamba hasta el poblado de San José en el Municipio de Porongo, desde allí continuar por un camino bien señalizado hasta la Reserva Natural Municipal de Espejillos.</p>
         </div>
-      </div>
-      <div class="card-home my-5 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-        <a href="https://tag-places-sergioski9.herokuapp.com/places/3" target="_blank"><img src="https://res.cloudinary.com/dgzbf6kp2/image/upload/v1652296970/development/espejillos-santa-cruz_vtqfvm.jpg" alt="espejillos-santa-cruz-bolivia"></a>
       </div>
     </div>
   </div>

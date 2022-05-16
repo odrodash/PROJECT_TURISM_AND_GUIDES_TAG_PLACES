@@ -4,6 +4,18 @@
   font-size: 40px;
 }
 
+#font-arial-guide {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+#font-arial-guide-2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
 .anchor-white {
   text-decoration: none;
   color: white;
@@ -14,6 +26,18 @@
 }
 
 #border-white {
+  display: inline-block;
+  border-bottom: 3px solid #FA2255;
+  color: #F4F4F4;
+}
+
+#border-white-guide {
+  display: inline-block;
+  border-bottom: 3px solid #FA2255;
+  color: #F4F4F4;
+}
+
+#border-white-guide-2 {
   display: inline-block;
   border-bottom: 3px solid #FA2255;
   color: #F4F4F4;

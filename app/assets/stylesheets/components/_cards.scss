@@ -44,6 +44,19 @@
   box-shadow: 10px 10px 0px 1px rgba(0, 0, 0, 0.2);
 }
 
+.card-home-guide img {
+  object-fit: cover cover;
+  width: 100%;
+  height: 300px;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 10px 10px 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-home-guide img:hover {
+  border: 2px solid #f4845f;
+  transition: 0.1s;
+}
+
 .card-home img:hover {
   border: 2px solid #f4845f;
   transition: 0.1s;
