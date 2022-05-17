@@ -26,8 +26,12 @@
           <p><%= @guide.email %></p>
         </div>
         <div class="text-center border-top col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <%= link_to "Delete Guide", guide_path(@guide), class: "btn btn-outline-danger mx-2 my-2", method: :delete, data: { confirm: "You are sure delete this profile?"} %>
-          <%= link_to "Edit Profile", edit_guide_path(@guide), class: "btn btn-outline-warning mx-2 my-2" %>
+          <% if policy(@guide).edit? %>
+            <%= link_to "Edit Profile", edit_guide_path(@guide), class: "btn btn-outline-warning mx-2 my-2" %>
+          <% end %>
+          <% if policy(@guide).destroy? %>
+            <%= link_to "Delete Guide", guide_path(@guide), class: "btn btn-outline-danger mx-2 my-2", method: :delete, data: { confirm: "You are sure delete this profile?"} %>
+          <% end %>
         </div>
         <div class="card-footer col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <small><em class="text-muted">Profile guide created <%= distance_of_time_in_words_to_now(@guide.created_at) %> ago</em></small>
@@ -71,14 +75,16 @@
               <% if @guide.review_guides.empty? %>
                 <small><em class="text-muted">Be the first one to review this place</em></small>
               <% end %>
-              <% @guide.review_guides.each do |review| %>
+              <% @guide.review_guides.each do |review_guide| %>
                 <div>
-                  <% review.rating.times do %>
+                  <% review_guide.rating.times do %>
                     <i class="fas fa-star star-yellow"></i>
                   <% end %>
-                  <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-                  <p id="review-guide-<%= review.id %>" class="mb-0 text-shadow"><%= review.comment %></p>
-                  <%= link_to "Delete Review", review_guide_path(review), remote: true, method: :delete, class: "btn btn-outline-danger my-3", data: { confirm: "Are you sure delete place?"} %>
+                  <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review_guide.created_at) %> ago</em></small>
+                  <p id="review-guide-<%= review_guide.id %>" class="mb-0 text-shadow"><%= review_guide.comment %></p>
+                  <% if policy(review_guide).destroy? %>
+                    <%= link_to "Delete Review", review_guide_path(review_guide), remote: true, method: :delete, class: "btn btn-outline-danger my-3", data: { confirm: "Are you sure delete place?"} %>
+                  <% end %>
                 </div>
                 <hr>
               <% end %>

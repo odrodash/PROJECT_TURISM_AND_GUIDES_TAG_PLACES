@@ -3,6 +3,9 @@ class ReviewGuidesController < ApplicationController
     @review_guide = ReviewGuide.new(review_params)
     @guide = Guide.find(params[:guide_id])
     @review_guide.guide = @guide
+    @review_guide.user_id = current_user.id
+    authorize @review_guide
+
     if @review_guide.save
       redirect_to guide_path(@guide, anchor: "review-guide-#{@review_guide.id}")
     else
@@ -12,6 +15,8 @@ class ReviewGuidesController < ApplicationController
 
   def destroy
     @review_guide = ReviewGuide.find(params[:id])
+    authorize @review_guide
+
     @review_guide.destroy
 
     redirect_to guide_path(@review_guide.guide, anchor: "reviews-guide")

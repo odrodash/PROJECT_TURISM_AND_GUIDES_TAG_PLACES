@@ -3,6 +3,8 @@ class Place < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :guides
 
+  belongs_to :user
+
   validates :place, presence: true
   validates :photo, presence: true
   validates :country, presence: true

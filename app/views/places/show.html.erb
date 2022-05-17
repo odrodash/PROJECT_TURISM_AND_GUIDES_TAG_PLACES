@@ -13,8 +13,12 @@
         <small><em class="text-muted">created <%= distance_of_time_in_words_to_now(@place.created_at) %> ago</em></small>
     </div>
     <div>
-      <%= link_to "Edit Place", edit_place_path(@place), class: "btn btn-outline-warning mx-4"%>
-      <%= link_to "Delete Place", place_path(@place), method: :delete, class: "btn btn-outline-danger mx-4", data: { confirm: "Are you sure delete place?"} %>
+      <% if policy(@place).edit? %>
+        <%= link_to "Edit Place", edit_place_path(@place), class: "btn btn-outline-warning mx-4"%>
+      <% end %>
+      <% if policy(@place).destroy? %>
+        <%= link_to "Delete Place", place_path(@place), method: :delete, class: "btn btn-outline-danger mx-4", data: { confirm: "Are you sure delete place?"} %>
+      <% end %>
     </div>
   </div>
   <hr class="">
@@ -32,7 +36,9 @@
             <% end %>
             <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
             <p id="review-<%= review.id %>" class="mb-0 text-shadow"><%= review.comment %></p>
-            <%= link_to "Delete Review", review_path(review), remote: true, method: :delete, class: "btn btn-outline-danger my-3", data: { confirm: "Are you sure delete place?"} %>
+            <% if policy(review).destroy? %>
+              <%= link_to "Delete Review", review_path(review), remote: true, method: :delete, class: "btn btn-outline-danger my-3", data: { confirm: "Are you sure delete place?"} %>
+            <% end %>
           </div>
           <hr>
         <% end %>

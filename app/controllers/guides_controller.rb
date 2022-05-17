@@ -5,21 +5,26 @@ class GuidesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @guides = Guide.all
+    @guides = policy_scope(Guide).order(created_at: :desc)
   end
 
   def show
     @guide.place = @place
     @review_guide = ReviewGuide.new(guide: @guide)
+    authorize @guide
   end
 
   def new
     @guide = Guide.new
+    authorize @guide
   end
 
   def create
     @guide = Guide.new(guide_params)
     @guide.place_id = @place.id
+    @guide.user_id = current_user.id
+
+    authorize @guide
 
     if @guide.save
       redirect_to guide_path(@guide)
@@ -29,9 +34,11 @@ class GuidesController < ApplicationController
   end
 
   def edit
+    authorize @guide
   end
 
   def update
+    authorize @guide
     if @guide.update(guide_params)
       redirect_to guide_path(@guide)
     else
@@ -40,6 +47,7 @@ class GuidesController < ApplicationController
   end
 
   def destroy
+    authorize @guide
     @guide.destroy
 
     redirect_to guides_path
